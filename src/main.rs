@@ -5,11 +5,12 @@
 #![reexport_test_harness_main = "test_main"]
 
 use cipherdogs_os_art::println;
+use cipherdogs_os_art::vga;
 use core::panic::PanicInfo;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    vga::WRITER.lock().clear_all();
+    //vga::WRITER.lock().clear_all();
     let fg = vga::Color::Black;
     let bg = vga::Color::White;
     vga::WRITER.lock().write_xy_color_byte(6, 4, fg, bg, b' ');
