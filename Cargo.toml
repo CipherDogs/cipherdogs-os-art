@@ -1,5 +1,5 @@
 [package]
-name = "cipherdogs-os-art"
+name = "cipherdogs_os_art"
 version = "0.1.0"
 authors = ["DEADBLACKCLOVER <deadblackclover@protonmail.com>"]
 description = "Cipher Dogs operation system powered by Rust"
