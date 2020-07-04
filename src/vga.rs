@@ -141,6 +141,22 @@ impl Writer {
             self.buffer.chars[row][col].write(blank);
         }
     }
+
+    pub fn write_xy_byte(&mut self, x: usize, y: usize, byte: u8) {
+        let color_code = self.color_code;
+        self.buffer.chars[x][y].write(ScreenChar {
+            ascii_character: byte,
+            color_code,
+        });
+    }
+
+    pub fn write_xy_color_byte(&mut self, x: usize, y: usize, fg: Color, bg: Color, byte: u8) {
+        let color_code = ColorCode::new(fg, bg);
+        self.buffer.chars[x][y].write(ScreenChar {
+            ascii_character: byte,
+            color_code,
+        });
+    }
 }
 
 impl fmt::Write for Writer {
