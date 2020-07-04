@@ -13,9 +13,13 @@ pub extern "C" fn _start() -> ! {
     //vga::WRITER.lock().clear_all();
     let fg = vga::Color::Black;
     let bg = vga::Color::White;
-    vga::WRITER.lock().write_xy_color_byte(6, 4, fg, bg, b' ');
+
+    vga::WRITER.lock().write_xy_color_byte(2, 1, fg, bg, b' ');
+    vga::WRITER.lock().write_xy_color_byte(3, 1, fg, bg, b' ');
+    vga::WRITER.lock().write_xy_color_byte(4, 1, fg, bg, b' ');
+
     vga::WRITER.lock().write_xy_byte(6, 5, b't');
-    println!("Hello World{}", "!");
+    println!("Copyleft {} CipherDogs | Source code available under the AGPL", "2020");
 
     #[cfg(test)]
     test_main();
