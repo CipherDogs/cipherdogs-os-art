@@ -6,19 +6,15 @@
 
 use cipherdogs_os_art::println;
 use cipherdogs_os_art::vga;
+use cipherdogs_os_art::window;
 use core::panic::PanicInfo;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
     //vga::WRITER.lock().clear_all();
-    let fg = vga::Color::Black;
-    let bg = vga::Color::White;
 
-    vga::WRITER.lock().write_xy_color_byte(2, 1, fg, bg, b' ');
-    vga::WRITER.lock().write_xy_color_byte(3, 1, fg, bg, b' ');
-    vga::WRITER.lock().write_xy_color_byte(4, 1, fg, bg, b' ');
+    window::create_center();
 
-    vga::WRITER.lock().write_xy_byte(6, 5, b't');
     println!("Copyleft {} CipherDogs | Source code available under the AGPL", "2020");
 
     #[cfg(test)]
