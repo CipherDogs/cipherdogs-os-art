@@ -1,5 +1,5 @@
 # cipherdogs-os-art
-Cipher Dogs operation system powered by Rust
+Cipher Dogs operating system made using Rust
 
 ## Dependencies
 ```sh
