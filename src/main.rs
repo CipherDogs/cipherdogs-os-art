@@ -5,15 +5,16 @@
 #![reexport_test_harness_main = "test_main"]
 
 use cipherdogs_os_art::println;
+use cipherdogs_os_art::vga;
 use cipherdogs_os_art::window;
 use core::panic::PanicInfo;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    //vga::WRITER.lock().clear_all();
+    vga::WRITER.lock().clear_all();
 
     window::create_center();
-    window::write_string(5, 5, "test");
+    //window::write_string(50, 15, "test");
 
     println!(
         "Copyleft {} CipherDogs | Source code available under the AGPL",

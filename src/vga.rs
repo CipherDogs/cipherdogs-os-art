@@ -142,6 +142,18 @@ impl Writer {
         }
     }
 
+    pub fn clear_all(&mut self) {
+		let blank = ScreenChar {
+			ascii_character: b' ',
+			color_code: self.color_code,
+		};
+		for row in 0..BUFFER_HEIGHT {
+			for col in 0..BUFFER_WIDTH {
+				self.buffer.chars[row][col].write(blank);
+			}
+		}
+	}
+
     fn write_xy(&mut self, x: usize, y: usize, color_code: ColorCode, byte: u8) {
         self.buffer.chars[x][y].write(ScreenChar {
             ascii_character: byte,
