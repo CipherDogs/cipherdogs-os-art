@@ -23,26 +23,26 @@ pub fn create_center() {
 }
 
 fn draw(x1: usize, x2: usize, y1: usize, y2: usize) {
-    for x in (x1 + 1..x2 + 1) {
-        for y in (y1 + 1..y2 + 1) {
+    for x in x1 + 1..x2 + 1 {
+        for y in y1 + 1..y2 + 1 {
             vga::WRITER.lock().write_xy_color_byte(x, y, FG, SH, b' ');
         }
     }
 
-    for x in (x1..x2) {
-        for y in (y1..y2) {
+    for x in x1..x2 {
+        for y in y1..y2 {
             vga::WRITER.lock().write_xy_color_byte(x, y, FG, BG, b' ');
         }
     }
 
-    for x in (x1 + 1..x2 - 1) {
+    for x in x1 + 1..x2 - 1 {
         vga::WRITER.lock().write_xy_color_byte(x, y1, FG, BG, b'|');
         vga::WRITER
             .lock()
             .write_xy_color_byte(x, y2 - 1, FG, BG, b'|');
     }
 
-    for y in (y1 + 1..y2 - 1) {
+    for y in y1 + 1..y2 - 1 {
         vga::WRITER.lock().write_xy_color_byte(x1, y, FG, BG, b'=');
         vga::WRITER
             .lock()
