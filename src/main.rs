@@ -13,7 +13,7 @@ pub extern "C" fn _start() -> ! {
     //vga::WRITER.lock().clear_all();
 
     window::create_center();
-    window::create(10, 10);
+    window::write_string(5, 5, "test");
 
     println!(
         "Copyleft {} CipherDogs | Source code available under the AGPL",

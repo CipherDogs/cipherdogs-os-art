@@ -142,20 +142,46 @@ impl Writer {
         }
     }
 
-    pub fn write_xy_byte(&mut self, x: usize, y: usize, byte: u8) {
-        let color_code = self.color_code;
+    fn write_xy(&mut self, x: usize, y: usize, color_code: ColorCode, byte: u8) {
         self.buffer.chars[x][y].write(ScreenChar {
             ascii_character: byte,
             color_code,
         });
     }
 
+    fn write_xy_str(&mut self, x: usize, y: usize, color_code: ColorCode, s: &str) {
+        for (i, byte) in s.bytes().enumerate() {
+            match byte {
+                // printable ASCII byte or newline
+                0x20..=0x7e | b'\n' => self.write_xy(x, y + i, color_code, byte),
+                // not part of printable ASCII range
+                _ => self.write_xy(x, y + i, color_code, 0xfe),
+            }
+        }
+    }
+
+    /// Writes an ASCII byte to the buffer.
+    pub fn write_xy_byte(&mut self, x: usize, y: usize, byte: u8) {
+        let color_code = self.color_code;
+        self.write_xy(x, y, color_code, byte);
+    }
+
+    /// Writes an ASCII color byte to the buffer.
     pub fn write_xy_color_byte(&mut self, x: usize, y: usize, fg: Color, bg: Color, byte: u8) {
         let color_code = ColorCode::new(fg, bg);
-        self.buffer.chars[x][y].write(ScreenChar {
-            ascii_character: byte,
-            color_code,
-        });
+        self.write_xy(x, y, color_code, byte);
+    }
+
+    /// Writes the given ASCII string to the buffer.
+    pub fn write_xy_string(&mut self, x: usize, y: usize, s: &str) {
+        let color_code = self.color_code;
+        self.write_xy_str(x, y, color_code, s);
+    }
+
+    /// Writes the given ASCII color string to the buffer.
+    pub fn write_xy_color_string(&mut self, x: usize, y: usize, fg: Color, bg: Color, s: &str) {
+        let color_code = ColorCode::new(fg, bg);
+        self.write_xy_str(x, y, color_code, s);
     }
 }
 

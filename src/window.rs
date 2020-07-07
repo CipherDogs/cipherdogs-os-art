@@ -4,6 +4,10 @@ const FG: vga::Color = vga::Color::Black;
 const SH: vga::Color = vga::Color::LightGray;
 const BG: vga::Color = vga::Color::White;
 
+pub fn write_string(x: usize, y: usize, s: &str) {
+    vga::WRITER.lock().write_xy_color_string(x, y, FG, BG, s);
+}
+
 pub fn create(x1: usize, x2: usize, y1: usize, y2: usize) {
     draw(x1, x2, y1, y2);
 }
