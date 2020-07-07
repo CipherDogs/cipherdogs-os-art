@@ -5,7 +5,6 @@
 #![reexport_test_harness_main = "test_main"]
 
 use cipherdogs_os_art::println;
-use cipherdogs_os_art::vga;
 use cipherdogs_os_art::window;
 use core::panic::PanicInfo;
 
@@ -14,8 +13,12 @@ pub extern "C" fn _start() -> ! {
     //vga::WRITER.lock().clear_all();
 
     window::create_center();
+    window::create(10, 10);
 
-    println!("Copyleft {} CipherDogs | Source code available under the AGPL", "2020");
+    println!(
+        "Copyleft {} CipherDogs | Source code available under the AGPL",
+        "2020"
+    );
 
     #[cfg(test)]
     test_main();
