@@ -8,12 +8,12 @@ pub fn write_string(x: usize, y: usize, s: &str) {
     vga::WRITER.lock().write_xy_color_string(x, y, FG, BG, s);
 }
 
-pub fn create(x1: usize, x2: usize, y1: usize, y2: usize) {
-    draw(x1, x2, y1, y2);
+pub fn create(x1: usize, y1: usize, x2: usize, y2: usize) {
+    draw(x1, y1, x2, y2);
 }
 
 pub fn create_left_top(height: usize, width: usize) {
-    draw(2, height, 1, width);
+    draw(2, 1, height, width);
 }
 
 pub fn create_center() {
@@ -23,10 +23,10 @@ pub fn create_center() {
     let y1 = 79 / 4;
     let y2 = 79 - (79 / 4);
 
-    draw(x1, x2, y1, y2);
+    draw(x1, y1, x2, y2);
 }
 
-fn draw(x1: usize, x2: usize, y1: usize, y2: usize) {
+fn draw(x1: usize, y1: usize, x2: usize, y2: usize) {
     for x in x1 + 1..x2 + 1 {
         for y in y1 + 1..y2 + 1 {
             vga::WRITER.lock().write_xy_color_byte(x, y, FG, SH, b' ');
