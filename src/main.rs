@@ -4,6 +4,7 @@
 #![test_runner(cipherdogs_os_art::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 
+use cipherdogs_os_art::logo;
 use cipherdogs_os_art::println;
 use cipherdogs_os_art::vga;
 use cipherdogs_os_art::window;
@@ -15,6 +16,7 @@ pub extern "C" fn _start() -> ! {
 
     window::create_center();
     //window::write_string(50, 15, "test");
+    logo::draw(7, 40, 17, 58);
 
     println!(
         "Copyleft {} CipherDogs | Source code available under the AGPL",

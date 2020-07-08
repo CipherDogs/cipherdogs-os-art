@@ -6,6 +6,7 @@
 
 use core::panic::PanicInfo;
 
+pub mod logo;
 pub mod serial;
 pub mod vga;
 pub mod window;
