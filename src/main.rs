@@ -19,7 +19,7 @@ pub extern "C" fn _start() -> ! {
     logo::draw(7, 40, 17, 58);
 
     println!(
-        "Copyleft {} CipherDogs | Source code available under the AGPL",
+        "Copyleft {} CipherDogs | Source code available under the GPL-3.0",
         "2020"
     );
 
