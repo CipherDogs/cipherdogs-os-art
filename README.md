@@ -1,6 +1,8 @@
 # cipherdogs-os-art
 Cipher Dogs operating system made using Rust
 
+![cipherdogs-os-art](cipherdogs-os-art.jpg)
+
 ## Dependencies
 ```sh
 sudo apt install qemu
