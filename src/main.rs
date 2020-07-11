@@ -15,7 +15,8 @@ pub extern "C" fn _start() -> ! {
     vga::WRITER.lock().clear_all();
 
     window::create_center();
-    //window::write_string(50, 15, "test");
+    window::write_string(10, 25, "CipherDogs");
+    window::write_string(14, 22, "Cyber-crypto team");
     logo::draw(7, 40, 17, 58);
 
     println!(
