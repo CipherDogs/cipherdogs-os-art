@@ -11,7 +11,6 @@ sudo apt install grub-common
 sudo apt install xorriso
 cargo install cargo-xbuild
 cargo install bootimage
-rustup default nightly
 rustup component add rust-src
 rustup component add llvm-tools-preview
 ```
