@@ -2,7 +2,7 @@
 name = "cipherdogs_os_art"
 version = "0.1.0"
 authors = ["DEADBLACKCLOVER <deadblackclover@protonmail.com>"]
-description = "Cipher Dogs operation system powered by Rust"
+description = "CipherDogs operation system powered by Rust"
 edition = "2018"
 license = "GPL-3.0"
 readme = "README.md"
